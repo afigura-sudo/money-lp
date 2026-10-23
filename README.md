@@ -1,6 +1,6 @@
 # Money Hub page
 
-Static build of the Claude Design prototype `Money Hub.dc.html` (the U.S. News Money section front). No framework or build step. Open `index.html` directly or serve the folder.
+Static build of the Claude Design prototype `Money Hub v2.dc.html` (the U.S. News Money section front). No framework or build step. Open `index.html` directly or serve the folder.
 
 - `index.html`: all content is in the markup, so every topic panel, goal result and calculator renders without JS. Inactive panels use `hidden`.
 - `assets/money-hub.css`: styles, with breakpoints at 1300px (burger menu), 980px (single column) and 560px (mobile).
@@ -11,23 +11,19 @@ Static build of the Claude Design prototype `Money Hub.dc.html` (the U.S. News M
 - The lead "Latest in money" image (`editorial-1-couple-advisor.jpg`) is a stand-in from the insurance hub.
 - The ranking-card descriptions for Banking, Mortgages, Personal & Auto Loans and Student Loans were written for the design, not taken from the live page.
 - The calculator default values are examples, not current rates.
-- The newsletter form only shows its confirmation state. It still has to be connected to the subscription endpoint (see the `TODO` in `money-hub.js`).
+- The newsletter form only shows its confirmation state. It still has to be connected to the subscription endpoint (see the `TODO` in `money-hub.js`)## Design v2 and search markup
 
-## SEO / GEO / AEO additions (from the Oct. 2026 audit)
+The page follows `Money Hub v2.dc.html` (Oct. 23, 2026): navy hero with the H1 "Compare Credit Cards, Loans, Banks and Brokers" and an "Updated / Reviewed by" line, an accordion FAQ, and the Invested newsletter block.
 
-- **Structured data:** one JSON-LD `@graph` in `<head>` with Organization, WebSite, CollectionPage, BreadcrumbList, an ItemList of the six ranking categories, an ItemList of the latest articles (with authors and dates), and FAQPage.
-- **Social sharing:** Open Graph and Twitter Card tags, with a 1200×630 share image at `assets/og-money-hub.png`.
-- **Content:** a "How we rank" note under the rankings and a six-question FAQ section (also in the jump nav).
-- **Markup:** the H1 now includes "U.S. News Money", bylines use `<time datetime>`, "Latest in money" is an `<ol>`, the lead photo has descriptive alt text plus WebP and 640px versions, and the footer links to social profiles.
+Search, social and AI markup in `<head>`:
+- A robots meta tag, Open Graph and Twitter Card tags, and a 1200×630 share image (`assets/money-hub-share.jpg`).
+- One JSON-LD `@graph` with Organization, WebSite (with SearchAction), CollectionPage (with `dateModified` and speakable selectors), BreadcrumbList, an ItemList of rankings, an ItemList of the latest articles, and FAQPage.
+
+Additions not in the design file: the latest-articles ItemList, the longer meta description, `<time datetime>` on bylines, and the responsive WebP/640px versions of the lead photo.
 
 **Check before launch:**
-- `og:image` and the schema logo use absolute URLs on the GitHub Pages host (`https://afigura-sudo.github.io/money-lp/assets/`). Change them to the production asset host.
-- The social profile URLs, the `@usnews` Twitter handle and the `usnews.com/favicon.ico` link couldn't be checked from the build environment. Verify them.
-- The FAQ and "How we rank" copy needs editorial review, especially the description of the ranking criteria. Keep the visible FAQ text and the FAQPage schema in sync.
-- Not done yet, because they need data or information this page doesn't have: a live rates table, links from bylines to author pages, robots.txt and sitemap.xml (production already has these), and self-hosted fonts.
-
-## Design options
-
-The prototype's Tweaks panel options map to the markup like this:
-- **Sticky nav off:** delete the `<nav class="jump-nav">` block.
-- **Default topic or calculator:** move `aria-selected="true"`/`tabindex="0"` to that tab and remove `hidden` from its panel (and add `hidden` to the old one). For the calculator, also update the prerendered result in `.calc__result`.
+- `og:image` uses the GitHub Pages host so previews work now. The design names `https://money.usnews.com/static/money-hub-share.jpg` for production: upload `assets/money-hub-share.jpg` there and change `ASSET_BASE`/`og:image`.
+- **Update together:** the "Updated Oct. 20, 2026" line and the schema `dateModified` must change at the same time.
+- **Unverified URLs:** the social profiles, the `@usnews` handle, the logo at `www.usnews.com/static/img/usn-logo-large.png` and the favicon couldn't be checked from the build environment.
+- **FAQ:** the visible FAQ text and the FAQPage schema must stay word-for-word identical.
+- **Alt text:** the design's alt text for the lead photo ("Older couple...") doesn't match the image, so the page uses "Couple reviewing financial documents with an advisor at a table".

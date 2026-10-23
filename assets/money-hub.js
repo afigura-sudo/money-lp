@@ -159,7 +159,7 @@
     nlForm.addEventListener('submit', function (e) {
       e.preventDefault();
       // TODO: post to the newsletter subscription endpoint once it's wired up.
-      nlForm.hidden = true;
+      (nlForm.closest('[data-newsletter-form]') || nlForm).hidden = true;
       nlDone.hidden = false;
     });
   }
