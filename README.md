@@ -11,7 +11,9 @@ Static build of the Claude Design prototype `Money Hub v2.dc.html` (the U.S. New
 - The lead "Latest in money" image (`editorial-1-couple-advisor.jpg`) is a stand-in from the insurance hub.
 - The ranking-card descriptions for Banking, Mortgages, Personal & Auto Loans and Student Loans were written for the design, not taken from the live page.
 - The calculator default values are examples, not current rates.
-- The newsletter form only shows its confirmation state. It still has to be connected to the subscription endpoint (see the `TODO` in `money-hub.js`)## Design v2 and search markup
+- The newsletter form only shows its confirmation state. It still has to be connected to the subscription endpoint (see the `TODO` in `money-hub.js`).
+
+## Design v2 and search markup
 
 The page follows `Money Hub v2.dc.html` (Oct. 23, 2026): navy hero with the H1 "Compare Credit Cards, Loans, Banks and Brokers" and an "Updated / Reviewed by" line, an accordion FAQ, and the Invested newsletter block.
 
